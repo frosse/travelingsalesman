@@ -7,14 +7,15 @@
 #include <vector>       /* vectors */
 
 class TravelingSalesman {
-    public:
-        TravelingSalesman(int);
-        ~TravelingSalesman();
-        void printCity();
+public:
+    TravelingSalesman(int);
+    ~TravelingSalesman();
 
-    private:
-        int cityAmount;
-        std::vector<City> listOfCities;
+private:
+    int cityAmount;
+    std::vector<City> listOfCities;
+    void initializeCities();
+    void printCities();
 };
 
 
