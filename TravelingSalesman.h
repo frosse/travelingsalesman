@@ -5,6 +5,10 @@
 #include "City.h"
 #include <stdlib.h>     /* For rand() */
 #include <vector>       /* vectors */
+#include <math.h>       /* For square root */
+#include <cstdlib>
+
+using namespace std;
 
 class TravelingSalesman {
 public:
@@ -13,9 +17,14 @@ public:
 
 private:
     int cityAmount;
-    std::vector<City> listOfCities;
+    vector<City> listOfCities;
+    vector<vector<double> > distances;
+
+    double calculateDistance(City, City);
     void initializeCities();
     void printCities();
+    void printDistances();
+    vector<vector<double>> calculateDistances();
 };
 
 
