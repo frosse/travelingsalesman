@@ -9,6 +9,8 @@ public:
 
     City(int, int);
     void printCoordinates();
+    int getX();
+    int getY();
 
 private:
     int x;

@@ -4,6 +4,5 @@
 
 int main() {
     TravelingSalesman ts(5);
-    ts.printCity();
     return 0;
 }
