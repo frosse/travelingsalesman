@@ -1,13 +1,15 @@
 #include "TravelingSalesman.h"
 
+TravelingSalesman::TravelingSalesman()=default;
+
 TravelingSalesman::TravelingSalesman(int amount) {
     cityAmount = amount;
     distances.resize(cityAmount, vector<double> (cityAmount,0));
     initializeCities();
     printCities();
     distances = calculateDistances();
+    distancesFromStartCity = calculateDistancesFromStartCity(0);
     printDistances();
-
 }
 
 TravelingSalesman::~TravelingSalesman() {
@@ -32,7 +34,11 @@ void TravelingSalesman::printCities() {
 vector<vector<double>> TravelingSalesman::calculateDistances() {
     for(int i = 0; i < cityAmount; i++) {
         for(int j = 0; j < cityAmount; j++) {
+            if( i == j) {
+                distances[i][j] = 0.0;
+            } else {
             distances[i][j] = calculateDistance(listOfCities[i], listOfCities[j]);
+            }
         }
     }
     return distances;
@@ -49,4 +55,29 @@ void TravelingSalesman::printDistances() {
         }
         cout << endl;
     }
+}
+
+int TravelingSalesman::getAmount() {
+    return cityAmount;
+}
+
+vector<vector<double>> TravelingSalesman::getDistances() {
+    return distances;
+}
+
+void TravelingSalesman::setDistance(int i, int j, double value) {
+    distances[i][j] = value;
+}
+
+vector<double> TravelingSalesman::calculateDistancesFromStartCity(int city) {
+    vector<double> distancesFromStartCity(cityAmount, 0.0);
+    for (int i = 0; i < cityAmount; i++) {
+        distancesFromStartCity[i] = distances[i][city];
+    }
+    return distancesFromStartCity;
+
+}
+
+double TravelingSalesman::getDistanceFromStartCity(int city) {
+    return distancesFromStartCity[city];
 }

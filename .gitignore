@@ -1,3 +1,6 @@
 *.o
 /cmake-build-debug
 /.idea
+/bin
+*.cbp
+*.depend
